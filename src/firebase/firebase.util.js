@@ -28,4 +28,33 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 // faceProvider.setCustomParameters({ display: "popup" });
 // export const signInWithFacebook = () => auth.signInWithPopup(faceProvider);
 
+//Create a new user and store it in the database
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  //Check if there is a logged-in user
+  if (!userAuth) return;
+
+  //Get the user Ref using the logged-in user uid and create a snapShot
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+
+  //If the user doesn't exists in the  db, set the data of the new logged-in user to the userRef so it can be stored in the database.
+  if (!snapShot.exists) {
+    const { displayName, email } = userAuth;
+    const createAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log("Error creating user", error.message);
+    }
+  }
+
+  return userRef;
+};
+
 export default firebase;

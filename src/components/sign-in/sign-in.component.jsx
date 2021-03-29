@@ -2,10 +2,7 @@ import React from "react";
 
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component";
-import {
-  signInWithGoogle,
-  signInWithFacebook,
-} from "../../firebase/firebase.util";
+import { signInWithGoogle } from "../../firebase/firebase.util";
 
 import "./sign-in.styles.scss";
 
