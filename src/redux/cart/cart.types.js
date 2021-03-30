@@ -1,1 +1,2 @@
 export const SHOW_CARTDROPDOWN = "SHOW_CARTDROPDOWN";
+export const ADD_CART_ITEM = "ADD_CART_ITEM";

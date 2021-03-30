@@ -2,11 +2,17 @@ import React from "react";
 
 import "./custom-button.styled.scss";
 
-const CustomButton = ({ children, isGoogleSignIn, ...otherprops }) => {
-  console.log(typeof showCartdropdown);
+const CustomButton = ({
+  children,
+  isGoogleSignIn,
+  inverted,
+  ...otherprops
+}) => {
   return (
     <button
-      className={`${isGoogleSignIn ? "google-sign-in" : ""} custom-button`}
+      className={`${isGoogleSignIn ? "google-sign-in" : ""} ${
+        inverted ? "inverted" : ""
+      } custom-button`}
       {...otherprops}
     >
       {children}
