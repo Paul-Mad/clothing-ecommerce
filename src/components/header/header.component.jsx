@@ -10,7 +10,7 @@ import "./header.styles.scss";
 
 //redux
 import { connect } from "react-redux";
-import { showCartdropdown } from "../../redux/cart/cart.actions";
+import { showCartDropdown } from "../../redux/cart/cart.actions";
 import {
   selectCartItemsCount,
   selectCartDropdown,
@@ -30,10 +30,10 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showCartdropdown: () => dispatch(showCartdropdown()),
+  showCartDropdown: () => dispatch(showCartDropdown()),
 });
 
-const Header = ({ currentUser, cartDropdown, showCartdropdown, itemCount }) => (
+const Header = ({ currentUser, cartDropdown, showCartDropdown, itemCount }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       {
@@ -57,7 +57,7 @@ const Header = ({ currentUser, cartDropdown, showCartdropdown, itemCount }) => (
           SIGN IN
         </Link>
       )}
-      <CartIcon clicked={showCartdropdown} itemCount={itemCount} />
+      <CartIcon clicked={showCartDropdown} itemCount={itemCount} />
     </div>
     {cartDropdown ? <CartDropdown /> : null}
   </div>

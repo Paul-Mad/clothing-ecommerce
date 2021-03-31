@@ -1,6 +1,6 @@
 import { SHOW_CARTDROPDOWN, ADD_CART_ITEM } from "./cart.types";
 
-export const showCartdropdown = () => ({
+export const showCartDropdown = () => ({
   type: SHOW_CARTDROPDOWN,
 });
 
