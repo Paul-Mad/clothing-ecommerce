@@ -1,9 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
 
+//redux
+import { connect } from "react-redux";
+import { selectCartItems } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
+
+//Components and styles
 import CustomButton from "../custom-button/custom-button.component";
 import CartItem from "../cart-item/cart-item.component";
-import { selectCartItems } from "../../redux/cart/cart.selectors";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = ({ cartItems }) => (
@@ -17,9 +21,10 @@ const CartDropdown = ({ cartItems }) => (
   </div>
 );
 
-const mapStateToProps = (state) => ({
-  //Using memoized selectors to get the cartItems to avoid re-render
-  cartItems: selectCartItems(state),
+const mapStateToProps = createStructuredSelector({
+  //Using memoized selectors to get the value.
+  ////createStructuredSelector is like passing the state as parameter for multiple selectors: (state) => { cartItems: selectCartItems(state), }
+  cartItems: selectCartItems,
 });
 
 export default connect(mapStateToProps)(CartDropdown);

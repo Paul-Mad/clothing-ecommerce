@@ -1,18 +1,28 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+
+//Components
 import HomePage from "./pages/homepage/homepage.component.jsx";
 import ShopPage from "./pages/shop/shop.component.jsx";
 import SignInAndSignUpPage from "./pages/signin-signup/signin-signup.component.jsx";
 import Header from "./components/header/header.component.jsx";
+
+//firebase
 import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 
+//redux
+import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from "./redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
 
+//style
 import "./App.css";
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  //Using memoized selectors to get the value.
+  ////createStructuredSelector is like passing the state as parameter for multiple selectors: (state) => { currentUser: selectCurrentUser(state) }
+  currentUser: selectCurrentUser,
 });
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),

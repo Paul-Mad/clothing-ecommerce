@@ -1,20 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import "./header.styles.scss";
+//import { ReactComponent as Logo } from "../../assets/crown.svg";
+
+//Components and styles
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { showCartdropdown } from "../../redux/cart/cart.actions";
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
-//import { ReactComponent as Logo } from "../../assets/crown.svg";
+import "./header.styles.scss";
+
+//redux
+import { connect } from "react-redux";
+import { showCartdropdown } from "../../redux/cart/cart.actions";
+import {
+  selectCartItemsCount,
+  selectCartDropdown,
+} from "../../redux/cart/cart.selectors";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
+
+//firebase
 import { auth } from "../../firebase/firebase.util";
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-  cartDropdown: state.cart.cartDropdown,
-  //Using memoized selectors to get the itemCount to avoid re-render
-  itemCount: selectCartItemsCount(state),
+const mapStateToProps = createStructuredSelector({
+  //Using memoized selectors to get the values.
+  //createStructuredSelector is like passing the state as parameter for multiple selectors: (state) => { currentUser: selectCurrentUser(state) }
+  currentUser: selectCurrentUser,
+  cartDropdown: selectCartDropdown,
+  itemCount: selectCartItemsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
