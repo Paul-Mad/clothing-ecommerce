@@ -1,7 +1,8 @@
 import {
   SHOW_CARTDROPDOWN,
   ADD_CART_ITEM,
-  REMOVE_CHECKOUT_ITEM,
+  CLEAR_CHECKOUT_ITEM,
+  REMOVE_CART_ITEM,
 } from "./cart.types";
 
 export const showCartDropdown = () => ({
@@ -12,8 +13,11 @@ export const addCartItem = (item) => ({
   type: ADD_CART_ITEM,
   payload: item,
 });
-
-export const removeCheckoutItem = (item) => ({
-  type: REMOVE_CHECKOUT_ITEM,
+export const removeCartItem = (item) => ({
+  type: REMOVE_CART_ITEM,
   payload: item,
+});
+export const clearCheckoutItem = (id) => ({
+  type: CLEAR_CHECKOUT_ITEM,
+  payload: id,
 });

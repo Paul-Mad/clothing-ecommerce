@@ -1,12 +1,12 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { removeCheckoutItem } from "../../redux/cart/cart.actions";
+import { clearCheckoutItem } from "../../redux/cart/cart.actions";
 import "./cart-item.styles.scss";
 
 const cartItem = ({
   item: { name, price, imageUrl, quantity, id },
-  removeCheckoutItem,
+  clearCheckoutItem,
 }) => {
   return (
     <div className="cart-item">
@@ -20,7 +20,7 @@ const cartItem = ({
       <div
         placeholder="Remove from cart"
         className="remove-button"
-        onClick={() => removeCheckoutItem(id)}
+        onClick={() => clearCheckoutItem(id)}
       >
         &#10005;
       </div>
@@ -28,6 +28,6 @@ const cartItem = ({
   );
 };
 const MapDispatchToProps = (dispatch) => ({
-  removeCheckoutItem: (id) => dispatch(removeCheckoutItem(id)),
+  clearCheckoutItem: (id) => dispatch(clearCheckoutItem(id)),
 });
 export default connect(null, MapDispatchToProps)(cartItem);
