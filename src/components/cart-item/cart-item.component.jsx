@@ -1,7 +1,10 @@
 import React from "react";
 import "./cart-item.styles.scss";
 
-const cartItem = ({ item: { name, price, imageUrl, quantity } }) => {
+const cartItem = ({
+  item: { name, price, imageUrl, quantity, id },
+  clicked,
+}) => {
   return (
     <div className="cart-item">
       <img src={imageUrl} alt="item" />
@@ -10,6 +13,13 @@ const cartItem = ({ item: { name, price, imageUrl, quantity } }) => {
         <span className="price">
           {quantity} x €{price}
         </span>
+      </div>
+      <div
+        placeholder="Remove from cart"
+        className="remove-button"
+        onClick={() => clicked(id)}
+      >
+        &#10005;
       </div>
     </div>
   );
