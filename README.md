@@ -8,7 +8,7 @@ What was implemented in this project yet:
 
 - Firebase database
 - Firebase user Authentication
-- Google Account user login
+- Google Account user Sign-Up/Sign-In
 - Routing
 - Colletions
 - User cart
