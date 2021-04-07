@@ -10,7 +10,7 @@ What was implemented in this project yet:
 - Firebase user Authentication
 - Google Account user Sign-Up/Sign-In
 - Routing
-- Colletions
+- Collections
 - User cart
 
 
