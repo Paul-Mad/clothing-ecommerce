@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { connect } from "react-redux";
 import { addCartItem } from "../../redux/cart/cart.actions";
 import "./collection-item.styles.scss";
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch) => ({
   addCartItem: (item) => dispatch(addCartItem(item)),
 });
 
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default connect(null, mapDispatchToProps)(memo(CollectionItem));
