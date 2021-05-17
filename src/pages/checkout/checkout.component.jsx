@@ -15,7 +15,13 @@ import {
 //Components and styles
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "../../components/stripe-button/stripebutton.component";
-import "./checkout.styles.scss";
+import {
+  CheckoutPageContainer,
+  CheckoutHeaderContainer,
+  HeaderBlockContainer,
+  TotalContainer,
+  WarningContainer,
+} from "./checkout.styles";
 
 const CheckOutPage = ({
   cartItems,
@@ -24,24 +30,24 @@ const CheckOutPage = ({
   removeCartItem,
   addCartItem,
 }) => (
-  <div className="checkout-page">
-    <div className="checkout-header">
-      <div className="header-block">
+  <CheckoutPageContainer>
+    <CheckoutHeaderContainer>
+      <HeaderBlockContainer>
         <span>Product</span>
-      </div>
-      <div className="header-block">
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
         <span>Description</span>
-      </div>
-      <div className="header-block">
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
         <span>Quantity</span>
-      </div>
-      <div className="header-block">
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
         <span>Price</span>
-      </div>
-      <div className="header-block">
+      </HeaderBlockContainer>
+      <HeaderBlockContainer>
         <span>Remove</span>
-      </div>
-    </div>
+      </HeaderBlockContainer>
+    </CheckoutHeaderContainer>
     {cartItems.map((cartItem) => (
       <CheckoutItem
         key={cartItem.id}
@@ -52,16 +58,16 @@ const CheckOutPage = ({
       />
     ))}
 
-    <div className="total">
+    <TotalContainer>
       <span>TOTAL:€{totalPrice}</span>
-    </div>
-    <div className="test-warning">
+    </TotalContainer>
+    <WarningContainer>
       *Test credit card* <payments></payments>
       <br />
       4242 4242 4242 4242 - exp: 01/22 - cvv:123
-    </div>
+    </WarningContainer>
     <StripeCheckoutButton price={totalPrice} />
-  </div>
+  </CheckoutPageContainer>
 );
 
 const mapStateToProps = createStructuredSelector({

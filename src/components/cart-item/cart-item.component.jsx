@@ -2,21 +2,25 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { clearCheckoutItem } from "../../redux/cart/cart.actions";
-import "./cart-item.styles.scss";
+import {
+  CartItemContainer,
+  ItemDetailsContainer,
+  CartItemImage,
+} from "./cart-item.styles";
 
 const cartItem = ({
   item: { name, price, imageUrl, quantity, id },
   clearCheckoutItem,
 }) => {
   return (
-    <div className="cart-item">
-      <img src={imageUrl} alt="item" />
-      <div className="item-details">
+    <CartItemContainer>
+      <CartItemImage src={imageUrl} alt="item" />
+      <ItemDetailsContainer>
         <span className="name">{name}</span>
         <span className="price">
           {quantity} x €{price}
         </span>
-      </div>
+      </ItemDetailsContainer>
       <div
         placeholder="Remove from cart"
         className="remove-button"
@@ -24,7 +28,7 @@ const cartItem = ({
       >
         &#10005;
       </div>
-    </div>
+    </CartItemContainer>
   );
 };
 const MapDispatchToProps = (dispatch) => ({

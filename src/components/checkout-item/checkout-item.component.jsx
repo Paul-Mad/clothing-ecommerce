@@ -1,6 +1,12 @@
 import React from "react";
 
-import "./checkout-item.styles.scss";
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  TextContainer,
+  QuantityContainer,
+  RemoveButtonContainer,
+} from "./checkout-item.styles";
 
 const CheckoutItem = ({
   cartItem,
@@ -11,12 +17,12 @@ const CheckoutItem = ({
   const { id, name, imageUrl, price, quantity } = cartItem;
 
   return (
-    <div className="checkout-item">
-      <div className="image-container">
-        <img alt="item" src={imageUrl} />
-      </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
+    <CheckoutItemContainer>
+      <ImageContainer className="image-container">
+        <img src={imageUrl} />
+      </ImageContainer>
+      <TextContainer>{name}</TextContainer>
+      <QuantityContainer>
         <div className="arrow" onClick={() => removeCartItem(cartItem)}>
           &#10094;
         </div>
@@ -24,12 +30,12 @@ const CheckoutItem = ({
         <div className="arrow" onClick={() => addCartItem(cartItem)}>
           &#10095;
         </div>
-      </span>
-      <span className="price">€{price}</span>
-      <div className="remove-button" onClick={() => clearCheckoutItem(id)}>
+      </QuantityContainer>
+      <TextContainer>€{price}</TextContainer>
+      <RemoveButtonContainer onClick={() => clearCheckoutItem(id)}>
         &#10005;
-      </div>
-    </div>
+      </RemoveButtonContainer>
+    </CheckoutItemContainer>
   );
 };
 
