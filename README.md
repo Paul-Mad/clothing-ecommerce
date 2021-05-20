@@ -12,6 +12,7 @@ What was implemented in this project yet:
 - Routing
 - Collections
 - User cart
+- Styled Components
 
 
 
@@ -25,7 +26,7 @@ What to do next:
 
 
 
-Skills:  REACT / REDUX / FIREBASE / JAVASCRIPT / HTML / SCSS
+Skills:  REACT / REDUX / FIREBASE / JAVASCRIPT / HTML / CSS / STYLED COMPONENTS
 
 - 🔭 I’m currently working on this project 
 
