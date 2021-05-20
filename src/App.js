@@ -20,15 +20,6 @@ import { createStructuredSelector } from "reselect";
 //style
 import "./App.css";
 
-const mapStateToProps = createStructuredSelector({
-  //Using memoized selectors to get the value.
-  ////createStructuredSelector is like passing the state as parameter for multiple selectors: (state) => { currentUser: selectCurrentUser(state) }
-  currentUser: selectCurrentUser,
-});
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -78,5 +69,14 @@ class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  //Using memoized selectors to get the value.
+  ////createStructuredSelector is like passing the state as parameter for multiple selectors: (state) => { currentUser: selectCurrentUser(state) }
+  currentUser: selectCurrentUser,
+});
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
